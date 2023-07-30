@@ -1,0 +1,6 @@
+/**
+ * Permite o Tailwind no seu react. 
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
