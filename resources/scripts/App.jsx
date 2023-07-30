@@ -1,9 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { jsonViewer } from './utils/jsonViewer.jsx';
+
 const App = () => {
+    const [Website, setWebsite] = useState(null); // Estado para armazenar as informações do JSON
+
     useEffect(() => {
-        // Define o novo título da página
-        const { Website } = window
-        document.title = Website.title + ' - Bem Vindo';
+        (async function () {
+            const response = await fetch(`/api/application`);
+            const { Website } = await response.json();
+            /**
+             * Armazena as informações na window.
+             */
+            window.Website = Website
+            setWebsite(window.Website)
+            /**
+             * Atualiza o titulo da aplicação.
+             */
+            document.title = window.Website.title + ' - Bem Vindo';
+        })();
     }, []);
 
     // Primeiro item do return do react tem que ser ou div ou </>, se não vai dar erro.
@@ -22,6 +36,18 @@ const App = () => {
                     <p className="text-gray-600 mb-6">
                         É aqui que tudo começa.
                     </p>
+                    {!Website ? (
+                        <p>Loading</p>
+                    ) : (
+                        <>
+                            <p>Seu Config Atual</p>
+                            <pre className="text-left bg-gray-100 p-4 rounded-md overflow-auto max-h-96">
+                                <code className="text-sm text-gray-800">
+                                    {jsonViewer(Website)}
+                                </code>
+                            </pre>
+                        </>
+                    )}
                 </div>
             </div>
         </>

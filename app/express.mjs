@@ -29,13 +29,14 @@ if (process.env.APP_MODE !== "production") {
 } else {
     console.log('O Servidor esta inciando...')
     const buildPath = path.join(__dirname, './http/public');
+    app.use(express.static(buildPath));
 
     // Rota para lidar com todas as outras requisições e redirecionar para o React buildado
     app.get('*', (req, res) => {
         res.sendFile(path.join(buildPath, 'index.html'));
     });
 
-    app.listen(process.env.APP_PORT, process.env.APP_URL, () => {
-        console.console.log('Servidor rodando na porta 3000');
+    app.listen(process.env.APP_PORT, "0.0.0.0", () => {
+        console.log('Servidor rodando na porta 3000');
     });
 }

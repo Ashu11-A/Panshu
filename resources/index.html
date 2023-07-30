@@ -11,14 +11,6 @@
 
 <body>
   <div id="root"></div>
-  <script type="module">
-    /**
-     * Simula oque o ptero faz com o react
-     */
-    const response = await fetch(`/api/application`);
-    const { Website } = await response.json();
-    window.Website = Website;
-  </script>
   <script type="module" src="/index.jsx"></script>
 </body>
 
