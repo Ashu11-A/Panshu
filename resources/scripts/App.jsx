@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { jsonViewer } from './utils/jsonViewer.jsx';
-import ContentBox from './utils/ContentBox.jsx';
-import Loading from './utils/Loading.jsx';
-import ErrorBoundary from './webpages/errors/ErrorBoundary'
+import { jsonViewer } from './utils/jsonViewer';
+import ContentBox from './utils/ContentBox';
+import Loading from './utils/Loading';
+import LineChart from './utils/lineChart'
 
 const App = () => {
     const [website, setWebsite] = useState(null); // Estado para armazenar as informações do JSON
@@ -52,6 +52,7 @@ const App = () => {
             ) : (
                 <>
                     <ContentBox>
+                    <LineChart APIs={website} />
                         <img
                             src='/vite.svg'
                             alt="Ícone do React"
