@@ -2,7 +2,8 @@ import express from 'express';
 const router = express.Router()
 import axios from 'axios'
 
-router.get('/backup', async (req, res) => {
+router.get('/backupAPI', async (req, res) => {
+    console.log('Alguem acessou o backupAPI')
     try {
         const backupInfo = await axios({
           url: 'http://node.seventyhost.net:25015/backup-size'

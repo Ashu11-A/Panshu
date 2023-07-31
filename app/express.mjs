@@ -3,7 +3,8 @@ import express from 'express';
 import { fileURLToPath } from "url";
 import ViteExpress from "vite-express";
 import ApplicationRoute from './http/routers/api/application.mjs'
-import backupInfo from './http/routers/api/backupInfo.mjs'
+import backupAPI from './http/routers/api/backupAPI.mjs'
+import bandwidth from './http/routers/api/bandwidth.mjs'
 const app = express();
 
 /**
@@ -18,7 +19,8 @@ app.use(express.json()); // Equivalente ao bodyParser.json()
 app.use(express.urlencoded({ extended: true })); // Equivalente ao bodyParser.urlencoded({ extended: true })
 
 app.use('/api', ApplicationRoute)
-app.use('/api', backupInfo)
+app.use('/api', backupAPI)
+app.use('/api', bandwidth)
 
 if (process.env.APP_MODE !== "production") {
     console.log('Aplicação em modo de desenvolvimento, iniciando...')

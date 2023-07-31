@@ -4,8 +4,9 @@ const router = express.Router()
 
 router.get('/application', (req, res) => {
     const valores = envLD()
+    console.log('Alguem acessou o Env')
     res.json({
-        Website: {
+        Env: {
             title: process.env.APP_TITLE,
             http: process.env.APP_URL,
             port: process.env.APP_PORT,
