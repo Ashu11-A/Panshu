@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { jsonViewer } from './utils/jsonViewer';
-import ContentBox from './utils/ContentBox';
-import Loading from './utils/Loading';
-import LineChart from './utils/lineChart'
+import ContentBox from './components/ContentBox';
+import Loading from './components/Loading';
+import LineChart from './components/lineChart'
 
 const App = () => {
     const [website, setWebsite] = useState(null); // Estado para armazenar as informações do JSON
