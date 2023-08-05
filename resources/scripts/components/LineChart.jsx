@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Chart, LineAdvance, Area } from 'bizcharts';
 
-class Demo extends Component {
+class LineChart extends Component {
 	constructor(props) {
 		super(props)
 	}
@@ -47,7 +47,4 @@ class Demo extends Component {
 	}
 }
 
-
-
-
-export default Demo
+export default LineChart

@@ -21,13 +21,12 @@ class ErrorBoundary extends Component {
   handleGoBack() {
     window.history.back();
   }
-
   render() {
     if (this.state.hasError) {
       // Estilo de página inteira usando Tailwind CSS
       return (
         <div className="flex flex-col items-center justify-center h-screen">
-          <h1 className="text-6xl font-bold text-red-600">500</h1>
+          <h1 className="text-6xl font-bold text-red-600">{this.props.errCode}</h1>
           <p className="text-xl text-gray-600 mt-4">Ops! Ocorreu um erro ao carregar a pagina.</p>
           <p className="text-lg text-gray-600 mt-2">
             Ocorreu um erro ao tentar carregar a pagina, tente novamente mais tarde.

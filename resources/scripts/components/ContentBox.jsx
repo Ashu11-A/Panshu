@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-// import tw from 'twin.macro'
 
 class ContentBox extends Component {
     constructor(props) {
