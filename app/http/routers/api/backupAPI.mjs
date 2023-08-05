@@ -9,7 +9,9 @@ router.get('/backupAPI', async (req, res) => {
           url: 'http://node.seventyhost.net:25015/backup-size'
         })
         res.json({
-            ...backupInfo.data
+            backup: {
+                ...backupInfo.data
+            }
         });
     } catch {
         res.json({

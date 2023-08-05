@@ -8,7 +8,7 @@ const App = () => {
     const [website, setWebsite] = useState(null); // Estado para armazenar as informações do JSON
 
     useEffect(() => {
-        (async function () {
+        const fetchData = async () =>{
             const [env, backup, bandwidth] = await Promise.all([
                 fetch(`/api/application`).then((res1) => res1.json()),
                 fetch(`/api/backupAPI`).then((res2) => res2.json()),
@@ -30,7 +30,11 @@ const App = () => {
              * Atualiza o título da aplicação.
              */
             document.title = (websiteData?.Env?.title ?? 'Olá') + ' - Bem Vindo';
-        })();
+        };
+
+        fetchData();
+
+        setInterval(fetchData, 30000);
     }, []);
 
     // Declara uma variável de estado "count" e seu método de atualização "setCount"
@@ -53,7 +57,20 @@ const App = () => {
                 <>
                     <div className='grid grid-cols-3'>
                         <ContentBox>
-                            <LineChart data={website.hourlyData} />
+                            <LineChart
+                                data={website.hourlyData}
+                                title={'Dados Salvos'}
+                                position={'time*dados'}
+                                color={'type'}
+                            />
+                        </ContentBox>
+                        <ContentBox>
+                            <LineChart
+                                data={website.backup.hourlyData}
+                                title={'Backup Size'}
+                                position={'time*size'}
+                                color={'title'}
+                            />
                         </ContentBox>
                         <ContentBox>
                             <img
