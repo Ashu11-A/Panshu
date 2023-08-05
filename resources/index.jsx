@@ -1,8 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import './index.css'
-import App from './scripts/App';
+import 'boxicons/css/boxicons.min.css'
+
 import ErrorBoundary from './scripts/webpages/errors/ErrorBoundary'
+import AppLayout from './scripts/components/layout/AppLayout';
+import Analytics from './scripts/pages/Analytics';
+import None from './scripts/pages/None';
 /**
  * Use react.StrictMode para poder ver erros do react, em modo produção remova-o., 
  * use o ErrorBoundary para erros 500
@@ -12,7 +18,17 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <>
         <React.StrictMode>
             <ErrorBoundary>
-                <App />
+                <BrowserRouter>
+                    <Routes>
+                        <Route path='/' element={<AppLayout/>}>
+                            <Route index element={<None/>}/>
+                            <Route path='/analytics' element={<Analytics/>}/>
+                            <Route path='/contributors' element={<None/>}/>
+                            <Route path='/user' element={<None/>}/>
+                            <Route path='/order' element={<None/>}/>
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
             </ErrorBoundary>
         </React.StrictMode>
     </>

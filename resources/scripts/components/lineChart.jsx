@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Chart, LineAdvance } from 'bizcharts';
+import { Chart, LineAdvance, Area } from 'bizcharts';
 
 class Demo extends Component {
 	constructor(props) {
@@ -8,20 +8,41 @@ class Demo extends Component {
 
 	render() {
 		const { data, title, position, color } = this.props
+
+		const scale = {
+			imagesProcessed: {
+			  min: 1000,
+			  nice: true,
+			},
+			time: {
+			  range: [0, 1],
+			},
+		  };
+
 		return <>
 			<h1>{title}</h1>
-			<Chart padding={[10, 20, 50, 40]} autoFit height={300} data={data} >
-				<LineAdvance
-					shape="circle"
-					point
-					area
-					position={position}
-					color={color}
-					size={3}
-					animate={{ duration: 100, easing: 'easeLinear' }}
-				/>
+			{!color ? (
+				<>
+					<Chart scale={scale} height={300} data={data} autoFit>
+						<Area position={position} />
+					</Chart>
+				</>
+			) : (
+				<>
+					<Chart padding={[10, 20, 70, 40]} autoFit height={300} data={data} >
+						<LineAdvance
+							shape="smooth"
+							point
+							area
+							position={position}
+							color={color}
+							size={3}
+							animate={{ duration: 100, easing: 'easeLinear' }}
+						/>
+					</Chart>
 
-			</Chart>
+				</>
+			)}
 		</>
 	}
 }
