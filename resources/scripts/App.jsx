@@ -59,7 +59,7 @@ const App = () => {
                         <ContentBox>
                             <LineChart
                                 data={website.hourlyData}
-                                title={'Dados Salvos'}
+                                title={'Dados Salvos (24h)'}
                                 position={'time*dados'}
                                 color={'type'}
                             />
@@ -67,7 +67,7 @@ const App = () => {
                         <ContentBox>
                             <LineChart
                                 data={website.backup.hourlyData}
-                                title={'Backup Size'}
+                                title={'Backup Size (24h)'}
                                 position={'time*size'}
                                 color={'title'}
                             />
